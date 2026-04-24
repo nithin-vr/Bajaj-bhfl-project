@@ -171,7 +171,7 @@ function processData(data) {
   }
 
   return {
-    user_id: "vr_nithin",
+    user_id: "vrnithin_18102005",
     email_id: "vrnithin123@gmail.com",
     college_roll_number: "RA2311003011845",
     hierarchies,
@@ -188,9 +188,9 @@ function processData(data) {
 // ── route ─────────────────────────────────────────────────────────────────────
 
 const EMPTY_RESPONSE = {
-  user_id: "yourname_ddmmyyyy",
-  email_id: "your@email.com",
-  college_roll_number: "yourroll",
+  user_id: "vrnithin_18102005",
+  email_id: "vrnithin123@email.com",
+  college_roll_number: "RA2311003011845",
   hierarchies: [],
   invalid_entries: [],
   duplicate_edges: [],
