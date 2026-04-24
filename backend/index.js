@@ -171,9 +171,9 @@ function processData(data) {
   }
 
   return {
-    user_id: "yourname_ddmmyyyy",
-    email_id: "your@email.com",
-    college_roll_number: "yourroll",
+    user_id: "vr_nithin",
+    email_id: "vrnithin123@gmail.com",
+    college_roll_number: "RA2311003011845",
     hierarchies,
     invalid_entries: invalid,
     duplicate_edges,
