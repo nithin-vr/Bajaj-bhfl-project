@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "https://bajaj-bhfl-project-sxdi.onrender.com/bfhl";
+// ✅ FIX: keep ONLY base URL (no /bfhl here)
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://bajaj-bhfl-project-sxdi.onrender.com";
 
 export default function App() {
   const [input, setInput] = useState("");
@@ -26,14 +29,23 @@ export default function App() {
 
     setLoading(true);
     try {
+      // ✅ FIX: correct endpoint
       const res = await fetch(`${API_URL}/bfhl`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ data }),
       });
+
+      if (!res.ok) {
+        throw new Error("API error");
+      }
+
       const json = await res.json();
       setResponse(json);
-    } catch {
+    } catch (err) {
+      console.error(err);
       setError("Failed to reach the backend. Is it running?");
     } finally {
       setLoading(false);
@@ -48,6 +60,7 @@ export default function App() {
         <label htmlFor="edges">
           Enter edges (comma-separated, e.g. <code>A-&gt;B, B-&gt;C</code>)
         </label>
+
         <input
           id="edges"
           type="text"
@@ -56,6 +69,7 @@ export default function App() {
           placeholder="A->B, A->C, B->D"
           autoComplete="off"
         />
+
         <button type="submit" disabled={loading}>
           {loading ? "Processing…" : "Submit"}
         </button>
